@@ -1,0 +1,6 @@
+Flask
+praw
+psycopg2
+requests
+slackclient
+sqlalchemy
