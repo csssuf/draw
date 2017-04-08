@@ -16,7 +16,7 @@ def index():
 def register(username):
     reddit = praw.Reddit(client_id='',
                          client_secret='',
-                         redirect_uri='http://mrkrabs.csh.rit.edu:8080/callback',
+                         redirect_uri='http://your.host.here/callback',
                          user_agent='drawbot by /u/csssuf')
     url = reddit.auth.url(['submit', 'identity', 'vote'], username, 'permanent')
     return redirect(url)
@@ -27,7 +27,7 @@ def callback():
         return "Failure"
     reddit = praw.Reddit(client_id='',
                          client_secret='',
-                         redirect_uri='http://mrkrabs.csh.rit.edu:8080/callback',
+                         redirect_uri='http://your.host.here:8080/callback',
                          user_agent='drawbot by /u/csssuf')
     refresh = reddit.auth.authorize(code)
     old_user = User.query.filter(User.username == str(reddit.user.me())).first()
